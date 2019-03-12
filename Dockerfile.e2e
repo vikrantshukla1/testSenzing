@@ -46,9 +46,6 @@ RUN mvn install:install-file \
 		-Dversion=$(cat ${SENZING_ROOT}/.SENZING_API_VERSION) \
 		-Dpackaging=jar
 
-RUN pwd
-RUN ls -la /app/src/target/
-
 RUN cp /app/src/target/senzing-api-server-1.5.1.jar /app/senzing-api-server.jar
 WORKDIR /app
 
@@ -57,8 +54,6 @@ ENV SENZING_BIND_ADDR=all
 ENV SENZING_CONCURRENCY=8
 ENV SENZING_INI_FILE=${SENZING_ROOT}/g2/python/G2Module.ini
 ENV SENZING_OPTIONS=""
-
-RUN java -version
 
 # Run the Senzing REST api server.
 EXPOSE 2080
